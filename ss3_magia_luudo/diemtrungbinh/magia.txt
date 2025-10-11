@@ -1,0 +1,7 @@
+BEgin
+  Input Toan
+  Input Ly
+  Input Hoa
+  Avegated = (Toan + Ly + Hoa) / 3
+  Output Avegated
+End.
