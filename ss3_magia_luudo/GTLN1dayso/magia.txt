@@ -1,0 +1,14 @@
+BEGIN
+    INPUT N              
+    INPUT a1, a2, ..., aN 
+
+    max ← a1             
+
+    FOR i ← 2 TO N DO
+        IF a[i] > max THEN
+            max ← a[i]
+        ENDIF
+    ENDFOR
+
+    OUTPUT "Giá trị lớn nhất là:", max
+END
