@@ -1,0 +1,19 @@
+BEGIN
+  INPUT score
+  IF score < 0 OR score > 100 THEN
+    PRINT "Giá trị điểm không hợp lệ. Vui lòng nhập 0..100."
+  ELSE
+    IF score >= 75 THEN
+      grade <- "Loại A"
+    ELSE IF score >= 60 THEN
+      grade <- "Loại B"
+    ELSE IF score >= 45 THEN
+      grade <- "Loại C"
+    ELSE IF score >= 35 THEN
+      grade <- "Loại D"
+    ELSE
+      grade <- "Loại E"
+    END IF
+    PRINT "Điểm:", score, "->", grade
+  END IF
+END
