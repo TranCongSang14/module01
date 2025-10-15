@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Bàn cờ vua</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 20px;
+            background-color: #f0f0f0;
+        }
+        table {
+            border-collapse: collapse;
+            border: 5px solid #ffaa00; /* Viền ngoài màu cam/vàng */
+            box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.3);
+            background-color: #ffaa00;
+        }
+        th, td {
+            width: 50px; /* Kích thước ô cờ */
+            height: 50px; /* Kích thước ô cờ */
+            padding: 0;
+            margin: 0;
+            border: none;
+        }
+        .white {
+            background-color: white;
+        }
+
+        .black {
+            background-color: black;
+        }
+        th {
+            text-align: center;
+            font-weight: bold;
+            color: black;
+            background-color: #ffaa00;
+            font-size: 1.2em;
+            vertical-align: middle;
+        }
+        .row-label {
+            width: 30px;
+            font-size: 1.3em;
+        }
+        .corner-cell {
+            width: 30px;
+            background-color: #ffaa00;
+        }
+    </style>
+</head>
+<body>
+<h1>Bàn cờ vua</h1>
+
+<table>
+    <thead>
+    <tr>
+        <th class="corner-cell"></th> <th>1</th>
+        <th>2</th>
+        <th>3</th>
+        <th>4</th>
+        <th>5</th>
+        <th>6</th>
+        <th>7</th>
+        <th>8</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <th class="row-label">A</th>
+        <td class="black"></td>
+        <td class="white"></td>
+        <td class="black"></td>
+        <td class="white"></td>
+        <td class="black"></td>
+        <td class="white"></td>
+        <td class="black"></td>
+        <td class="white"></td>
+    </tr>
+    <tr>
+        <th class="row-label">B</th>
+        <td class="white"></td>
+        <td class="black"></td>
+        <td class="white"></td>
+        <td class="black"></td>
+        <td class="white"></td>
+        <td class="black"></td>
+        <td class="white"></td>
+        <td class="black"></td>
+    </tr>
+    <tr>
+        <th class="row-label">C</th>
+        <td class="black"></td>
+        <td class="white"></td>
+        <td class="black"></td>
+        <td class="white"></td>
+        <td class="black"></td>
+        <td class="white"></td>
+        <td class="black"></td>
+        <td class="white"></td>
+    </tr>
+    <tr>
+        <th class="row-label">D</th>
+        <td class="white"></td>
+        <td class="black"></td>
+        <td class="white"></td>
+        <td class="black"></td>
+        <td class="white"></td>
+        <td class="black"></td>
+        <td class="white"></td>
+        <td class="black"></td>
+    </tr>
+    <tr>
+        <th class="row-label">E</th>
+        <td class="black"></td>
+        <td class="white"></td>
+        <td class="black"></td>
+        <td class="white"></td>
+        <td class="black"></td>
+        <td class="white"></td>
+        <td class="black"></td>
+        <td class="white"></td>
+    </tr>
+    <tr>
+        <th class="row-label">F</th>
+        <td class="white"></td>
+        <td class="black"></td>
+        <td class="white"></td>
+        <td class="black"></td>
+        <td class="white"></td>
+        <td class="black"></td>
+        <td class="white"></td>
+        <td class="black"></td>
+    </tr>
+    <tr>
+        <th class="row-label">G</th>
+        <td class="black"></td>
+        <td class="white"></td>
+        <td class="black"></td>
+        <td class="white"></td>
+        <td class="black"></td>
+        <td class="white"></td>
+        <td class="black"></td>
+        <td class="white"></td>
+    </tr>
+    <tr>
+        <th class="row-label">H</th>
+        <td class="white"></td>
+        <td class="black"></td>
+        <td class="white"></td>
+        <td class="black"></td>
+        <td class="white"></td>
+        <td class="black"></td>
+        <td class="white"></td>
+        <td class="black"></td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>
