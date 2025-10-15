@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>SỞ THÍCH CỦA BẠN</title>
+    <style>
+        body {
+            background-color: #E0FFFF;
+            font-family: Arial, sans-serif;
+        }
+        form {
+            width: 600px;
+            margin: 50px auto;
+            background-color: white;
+            border: 5px solid #FF4500;
+            padding: 20px;
+        }
+        h2 {
+            text-align: center;
+            background-color: #FF4500;
+            color: white;
+            padding: 10px;
+            margin-top: 0;
+        }
+        label {
+            font-weight: bold;
+            color: blue;
+        }
+        .form-group {
+            margin: 15px 0;
+        }
+        .hobby-group {
+            margin-left: 80px;
+        }
+        .hobby-group label {
+            color: #FF6347;
+            font-weight: normal;
+            margin-right: 30px;
+        }
+        input[type="text"], input[type="email"] {
+            width: 60%;
+            padding: 5px;
+            margin-left: 10px;
+        }
+        .buttons {
+            text-align: center;
+            margin-top: 20px;
+        }
+        input[type="submit"], input[type="reset"] {
+            padding: 6px 15px;
+            font-size: 15px;
+            margin: 5px;
+            cursor: pointer;
+            background-color: #DCDCDC;
+            border: 1px solid #555;
+        }
+        input[type="submit"]:hover, input[type="reset"]:hover {
+            background-color: #B0C4DE;
+        }
+    </style>
+</head>
+<body>
+<form>
+    <h2>SỞ THÍCH CỦA BẠN</h2>
+
+    <div class="form-group">
+        <label for="yourname">Họ và tên</label>
+        <input type="text" id="yourname" name="yourname">
+    </div>
+
+    <div class="form-group">
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email">
+    </div>
+
+    <div class="form-group">
+        <label>Sở thích</label>
+        <div class="hobby-group">
+            <input type="checkbox" name="hobby" value="thethao"> <label>Thể thao</label>
+            <input type="checkbox" name="hobby" value="amnhac"> <label>Âm nhạc</label>
+            <input type="checkbox" name="hobby" value="docsach"> <label>Đọc sách</label><br>
+            <input type="checkbox" name="hobby" value="luotweb"> <label>Lướt web</label>
+            <input type="checkbox" name="hobby" value="choigame"> <label>Chơi game</label>
+            <input type="checkbox" name="hobby" value="dienanh"> <label>Điện ảnh</label><br>
+            <input type="checkbox" name="hobby" value="dulich"> <label>Du lịch</label>
+        </div>
+    </div>
+    <div class="buttons">
+        <input type="submit" value="Gửi thông tin">
+        <input type="reset" value="Nhập lại">
+    </div>
+</form>
+</body>
+</html>
