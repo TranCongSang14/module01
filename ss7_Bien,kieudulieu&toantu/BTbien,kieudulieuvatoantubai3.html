@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bài 3: Tính Diện Tích Hình Tròn</title>
+</head>
+<body>
+<h1>Bài 3: Tính Diện Tích Hình Tròn</h1>
+<div>
+    <label for="radius_input">Nhập Bán Kính (r):</label>
+    <input type="number" id="radius_input" value="10">
+    <button onclick="tinh_dien_tich()">Tính Diện Tích</button>
+</div>
+<p id="result1">Nhập bán kính và nhấn nút để tính diện tích...</p>
+<script>
+    const PI = 3.14159;
+    function getFloatValue(id) {
+        const element = document.getElementById(id);
+        if (element) {
+
+            return parseFloat(element.value);
+        }
+        return NaN;
+    }
+    function tinh_dien_tich() {
+
+        const r = getFloatValue('radius_input');
+        const resultElement = document.getElementById('result1');
+
+        if (isNaN(r) || r < 0) {
+            resultElement.textContent = "Lỗi: Vui lòng nhập Bán Kính là một số dương hợp lệ.";
+            return;
+        }
+        const dien_tich = PI * r * r;
+        resultElement.innerHTML = `
+                Kết Quả: Diện tích hình tròn có bán kính ${r.toFixed(2)} là
+                <span style="font-weight: bold; color: blue;">${dien_tich.toFixed(2)}</span>
+            `;
+    }
+    tinh_dien_tich();
+</script>
+</body>
+</html>
