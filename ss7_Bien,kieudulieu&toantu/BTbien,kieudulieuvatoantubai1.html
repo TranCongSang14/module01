@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bài 1: Tính Điểm</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+    </style>
+</head>
+<body class="bg-gray-100 flex justify-center items-center min-h-screen p-4">
+
+<div class="w-full max-w-sm bg-white p-8 rounded-xl shadow-lg border-t-4 border-blue-500">
+    <h1 class="text-2xl font-bold text-gray-800 mb-6 text-center">
+        Bài 1: Tính Điểm Trung Bình
+    </h1>
+
+    <div class="space-y-4">
+        <input type="number" id="p_score" placeholder="Điểm Vật lý (P)"
+               class="w-full p-3 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500">
+
+        <input type="number" id="c_score" placeholder="Điểm Hóa học (C)"
+               class="w-full p-3 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500">
+
+        <input type="number" id="b_score" placeholder="Điểm Sinh học (B)"
+               class="w-full p-3 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500">
+        <button onclick="bai1_tinh_diem()"
+                class="w-full bg-blue-600 text-white font-semibold p-3 rounded-lg hover:bg-blue-700 transition duration-150 shadow-md">
+            Tính Tổng & Trung Bình
+        </button>
+    </div>
+
+    <div id="result1" class="mt-6 p-4 border-l-4 border-blue-400 bg-blue-50 rounded-lg text-gray-700 font-medium">
+        Nhập điểm và nhấn nút để xem kết quả...
+    </div>
+</div>
+<script>
+
+    function getFloatValue(id) {
+        const element = document.getElementById(id);
+        if (element) {
+
+            return parseFloat(element.value);
+        }
+        return NaN;
+    }
+
+
+    function bai1_tinh_diem() {
+
+        const p = getFloatValue('p_score');
+        const c = getFloatValue('c_score');
+        const b = getFloatValue('b_score');
+        const resultElement = document.getElementById('result1');
+
+
+        if (isNaN(p) || isNaN(c) || isNaN(b)) {
+            resultElement.textContent = "Lỗi: Vui lòng nhập số cho cả 3 môn.";
+            return;
+        }
+
+
+        if (p < 0 || c < 0 || b < 0) {
+            resultElement.textContent = "Lỗi: Điểm không thể là số âm.";
+            return;
+        }
+
+
+
+        const tong_diem = p + c + b;
+        const diem_trung_binh = tong_diem / 3;
+
+
+        resultElement.innerHTML = `
+                <span class="text-lg block mb-1 text-blue-800">Kết Quả Tính Toán:</span>
+                Tổng điểm: <span class="font-bold text-blue-700">${tong_diem.toFixed(2)}</span><br>
+                Điểm trung bình: <span class="font-bold text-blue-700">${diem_trung_binh.toFixed(2)}</span>
+            `;
+    }
+</script>
+</body>
+</html>
