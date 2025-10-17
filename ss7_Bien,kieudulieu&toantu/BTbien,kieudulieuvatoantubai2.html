@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bài 2: Chuyển Đổi Nhiệt Độ</title>
+</head>
+<body>
+
+<h1>Bài 2: Chuyển Đổi Nhiệt Độ</h1>
+
+<div>
+    <label for="celsius_input">Nhập độ C:</label>
+    <input type="number" id="celsius_input" value="0">
+    <button onclick="chuyen_doi()">Chuyển Đổi sang Độ F</button>
+</div>
+
+
+<p id="result1">Nhập giá trị độ C và nhấn nút để chuyển đổi...</p>
+
+<script>
+
+    function getFloatValue(id) {
+        const element = document.getElementById(id);
+        if (element) {
+            // Lấy giá trị và chuyển đổi sang số thực
+            return parseFloat(element.value);
+        }
+        return NaN;
+    }
+
+
+    function chuyen_doi() {
+
+        const c = getFloatValue('celsius_input');
+        const resultElement = document.getElementById('result1');
+
+
+        if (isNaN(c)) {
+            resultElement.textContent = "Lỗi: Vui lòng nhập giá trị nhiệt độ là số.";
+            return;
+        }
+
+
+        const f = (c * (9.0 / 5.0)) + 32;
+
+        resultElement.innerHTML = `
+                Kết Quả: ${c.toFixed(2)}°C tương đương với ${f.toFixed(2)}°F
+            `;
+    }
+
+
+    chuyen_doi();
+</script>
+</body>
+</html>
