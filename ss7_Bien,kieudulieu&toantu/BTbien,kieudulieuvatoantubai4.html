@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bài 4: Tính Chu Vi Hình Tròn</title>
+</head>
+<body>
+
+<h1>Bài 4: Tính Chu Vi Hình Tròn</h1>
+<div>
+    <label for="radius_input">Nhập Bán Kính (r):</label>
+    <input type="number" id="radius_input" value="10">
+    <button onclick="tinh_chu_vi()">Tính Chu Vi</button>
+</div>
+<p id="result1">Nhập bán kính và nhấn nút để tính chu vi...</p>
+<script>
+    const PI = 3.14159;
+    function getFloatValue(id) {
+        const element = document.getElementById(id);
+        if (element) {
+            return parseFloat(element.value);
+        }
+        return NaN;
+    }
+
+    function tinh_chu_vi() {
+        const r = getFloatValue('radius_input');
+        const resultElement = document.getElementById('result1');
+        if (isNaN(r) || r < 0) {
+            resultElement.textContent = "Lỗi: Vui lòng nhập Bán Kính là một số dương hợp lệ.";
+            return;
+        }
+        const chu_vi = 2 * PI * r;
+        resultElement.innerHTML = `
+                Kết Quả: Chu vi hình tròn có bán kính ${r.toFixed(2)} là
+                <span style="font-weight: bold; color: green;">${chu_vi.toFixed(2)}</span>
+            `;
+    }
+    tinh_chu_vi();
+</script>
+</body>
+</html>
