@@ -2,67 +2,41 @@
 <html lang="vi">
 <head>
     <meta charset="UTF-8">
-    <title>Ứng dụng Chuyển đổi Tiền tệ</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            text-align: center;
-            margin-top: 50px;
-        }
-        select, input, button {
-            padding: 8px;
-            margin: 5px;
-        }
-        #result {
-            margin-top: 20px;
-            font-weight: bold;
-            color: blue;
-        }
-    </style>
+    <title>Chuyển đổi tiền tệ</title>
 </head>
 <body>
-<h2>Ứng dụng Chuyển đổi Tiền tệ</h2>
-<label for="amount">Amount:</label>
-<input type="number" id="amount" value="1">
-<label for="from">From Currency:</label>
-<select id="from">
-    <option value="VND">Việt Nam Đồng (VND)</option>
-    <option value="USD">Đô la Mỹ (USD)</option>
-    <option value="EUR">Euro (EUR)</option>
-    <option value="JPY">Yên Nhật (JPY)</option>
-</select>
-<label for="to">To Currency:</label>
-<select id="to">
-    <option value="USD">Đô la Mỹ (USD)</option>
-    <option value="VND">Việt Nam Đồng (VND)</option>
-    <option value="EUR">Euro (EUR)</option>
-    <option value="JPY">Yên Nhật (JPY)</option>
-</select>
-<button onclick="convertCurrency()">Convert</button>
-<div id="result"></div>
+<h3>Chuyển đổi tiền tệ</h3>
+<form>
+    <label>Số lượng:</label>
+    <input type="number" id="amount" value="1">
+    <label>Từ tiền tệ:</label>
+    <select id="from">
+        <option value="VND">VietNam</option>
+        <option value="USD">USD</option>
+        <option value="EUR">Euro</option>
+    </select>
+    <label>Đến tiền tệ:</label>
+    <select id="to">
+        <option value="USD">USD</option>
+        <option value="VND">VietNam</option>
+        <option value="EUR">Euro</option>
+    </select>
+    <button type="button" onclick="convert()">Convert</button>
+</form>
+<p id="result"></p>
 <script>
-    const rates = {
-        VND: { USD: 0.000039, EUR: 0.000037, JPY: 0.0059, VND: 1 },
-        USD: { VND: 25500, EUR: 0.94, JPY: 150, USD: 1 },
-        EUR: { VND: 27000, USD: 1.06, JPY: 160, EUR: 1 },
-        JPY: { VND: 170, USD: 0.0067, EUR: 0.0062, JPY: 1 }
-    };
-
-    function convertCurrency() {
-        const amount = parseFloat(document.getElementById("amount").value);
-        const from = document.getElementById("from").value;
-        const to = document.getElementById("to").value;
-
-        if (isNaN(amount) || amount <= 0) {
-            document.getElementById("result").innerHTML = " Vui lòng nhập số tiền hợp lệ!";
-            return;
-        }
-
-        const rate = rates[from][to];
-        const result = amount * rate;
-
-        document.getElementById("result").innerHTML =
-            `Result: ${amount} ${from} = <b>${result.toFixed(4)} ${to}</b>`;
+    function convert() {
+        let amount = parseFloat(document.getElementById("amount").value);
+        let from = document.getElementById("from").value;
+        let to = document.getElementById("to").value;
+        let rate = 0;
+        if (from === "VND" && to === "USD") rate = 0.00004;
+        else if (from === "USD" && to === "VND") rate = 25000;
+        else if (from === "USD" && to === "EUR") rate = 0.9;
+        else if (from === "EUR" && to === "USD") rate = 1.1;
+        else rate = 1;
+        let result = amount * rate;
+        document.getElementById("result").innerText = "Result: " + result + " " + to;
     }
 </script>
 </body>
