@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Bài 2: Kiểm tra tuổi vào lớp 10</title>
+</head>
+<body>
+<h3>Kiểm tra đủ điều kiện vào lớp 10</h3>
+
+<table>
+    <tr>
+        <td>Nhập tuổi:</td>
+        <td><input type="number" id="tuoi"></td>
+    </tr>
+</table>
+
+<button onclick="kiemtra()">Kiểm tra</button>
+<p id="kq"></p>
+
+<script>
+    function kiemtra() {
+        let tuoi = Number(document.getElementById("tuoi").value);
+        if (tuoi >= 15) {
+            document.getElementById("kq").innerText = "Đủ điều kiện vào lớp 10.";
+        } else {
+            document.getElementById("kq").innerText = "Không đủ điều kiện vào lớp 10.";
+        }
+    }
+</script>
+</body>
+</html>

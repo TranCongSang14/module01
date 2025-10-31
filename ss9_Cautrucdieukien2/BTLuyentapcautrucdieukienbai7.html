@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Bài 7: Tính cước điện thoại</title>
+</head>
+<body>
+<h3>Tính cước điện thoại</h3>
+
+<table>
+    <tr>
+        <td>Nhập số phút gọi:</td>
+        <td><input type="number" id="phut"></td>
+    </tr>
+</table>
+
+<button onclick="tinh()">Tính cước</button>
+<p id="kq"></p>
+
+<script>
+    function tinh() {
+        let phut = Number(document.getElementById("phut").value);
+        let cuoc = 25000; 
+
+        if (phut > 200) cuoc += (phut - 200) * 200 + 150 * 400 + 50 * 600;
+        else if (phut > 50) cuoc += (phut - 50) * 400 + 50 * 600;
+        else cuoc += phut * 600;
+
+        document.getElementById("kq").innerText =
+            "Cước điện thoại là: " + cuoc.toLocaleString() + " VNĐ";
+    }
+</script>
+</body>
+</html>

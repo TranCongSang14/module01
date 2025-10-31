@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Kiểm tra chia hết</title>
+</head>
+<body>
+<h3>Kiểm tra a có chia hết cho b không</h3>
+
+<table>
+    <tr>
+        <td>Nhập a:</td>
+        <td><input type="number" id="a"></td>
+    </tr>
+    <tr>
+        <td>Nhập b:</td>
+        <td><input type="number" id="b"></td>
+    </tr>
+</table>
+<button onclick="kiemtra()">Kiểm tra</button>
+<p id="kq"></p>
+<script>
+    function kiemtra() {
+        let a = Number(document.getElementById("a").value);
+        let b = Number(document.getElementById("b").value);
+        if (b === 0) {
+            document.getElementById("kq").innerText = "Không thể chia cho 0";
+        } else if (a % b === 0) {
+            document.getElementById("kq").innerText = a + " chia hết cho " + b;
+        } else {
+            document.getElementById("kq").innerText = a + " không chia hết cho " + b;
+        }
+    }
+</script>
+</body>
+</html>

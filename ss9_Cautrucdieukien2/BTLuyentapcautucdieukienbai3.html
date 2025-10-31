@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Bài 3: Kiểm tra số âm, dương hay bằng 0</title>
+</head>
+<body>
+<h3>Kiểm tra số lớn hơn 0, nhỏ hơn 0 hay bằng 0</h3>
+
+<table>
+    <tr>
+        <td>Nhập số:</td>
+        <td><input type="number" id="n"></td>
+    </tr>
+</table>
+
+<button onclick="kiemtra()">Kiểm tra</button>
+<p id="kq"></p>
+
+<script>
+    function kiemtra() {
+        let n = Number(document.getElementById("n").value);
+        if (n > 0) {
+            document.getElementById("kq").innerText = n + " là số dương.";
+        } else if (n < 0) {
+            document.getElementById("kq").innerText = n + " là số âm.";
+        } else {
+            document.getElementById("kq").innerText = "Số bằng 0.";
+        }
+    }
+</script>
+</body>
+</html>

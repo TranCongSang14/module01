@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Bài 6: Tính tiền hoa hồng</title>
+</head>
+<body>
+<h3>Tính tiền hoa hồng</h3>
+
+<table>
+    <tr>
+        <td>Nhập doanh số bán hàng (VNĐ):</td>
+        <td><input type="number" id="ds"></td>
+    </tr>
+</table>
+
+<button onclick="tinh()">Tính hoa hồng</button>
+<p id="kq"></p>
+
+<script>
+    function tinh() {
+        let ds = Number(document.getElementById("ds").value);
+        let hh = 0;
+
+        if (ds >= 100000000) hh = ds * 0.1;
+        else if (ds >= 50000000) hh = ds * 0.07;
+        else if (ds >= 20000000) hh = ds * 0.05;
+        else hh = ds * 0.02;
+
+        document.getElementById("kq").innerText =
+            "Tiền hoa hồng: " + hh.toLocaleString() + " VNĐ";
+    }
+</script>
+</body>
+</html>
