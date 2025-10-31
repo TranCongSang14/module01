@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title> CHào</title>
+</head>
+<body>
+<h1> Giải phương trình bậc 1 </h1>
+<p id="output"></p>
+<script>
+    let a = 2;
+    let b = 4;
+    let ketQua;
+    if (a === 0) {
+        if (b === 0) {
+            ketQua = `Phương trình ${a}x + ${b} = 0: <strong>Vô số nghiệm</strong> (Mọi x đều thỏa mãn)`;
+        }
+        else {
+            ketQua = `Phương trình ${a}x + ${b} = 0: <strong>Vô nghiệm</strong>`;
+        }
+    }
+    else {
+        let x = -b / a;
+        ketQua = `Phương trình ${a}x + ${b} = 0: Có nghiệm duy nhất x = <strong>${x.toFixed(4)}</strong>`;
+    }
+    document.getElementById('output').innerHTML = ketQua;
+</script>
+</body>
+</html>

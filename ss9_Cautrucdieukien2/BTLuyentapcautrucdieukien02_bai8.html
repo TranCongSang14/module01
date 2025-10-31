@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Sang</title>
+</head>
+<body>
+<h1>Kiểm tra tuổi của một người </h1>
+<p id="output"></p>
+<script>
+    let tuoi = 55;
+    let ketQua;
+    let laSoNguyen = Number.isInteger(tuoi);
+    let lonHon0 = tuoi > 0;
+    let nhoHon120 = tuoi < 120;
+    if (laSoNguyen && lonHon0 && nhoHon120) {
+        ketQua = `Tuổi **${tuoi}** là số **HỢP LỆ** để là tuổi của một người.`;
+    } else {
+        ketQua = `Tuổi **${tuoi}** là số **KHÔNG HỢP LỆ** để là tuổi của một người.`;
+    }
+    document.getElementById('output').innerHTML = ketQua;
+</script>
+</body>
+</html>

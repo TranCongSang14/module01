@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Sang</title>
+</head>
+<body>
+<h1> Giải phương trình bậc 2 </h1>
+<p id="output"></p>
+<script>
+
+    let a = 1;
+    let b = -5;
+    let c = 6;
+    let ketQua;
+    if (a === 0) {
+        ketQua = `Phương trình ${a}x^2 + ${b}x + ${c} = 0: Đây là **phương trình bậc 1**.`;
+    }
+    else {
+        let delta = b * b - 4 * a * c;
+        if (delta < 0) {
+            ketQua = `Phương trình ${a}x^2 + ${b}x + ${c} = 0: <strong>Vô nghiệm</strong> (Δ < 0)`;
+        } else if (delta === 0) {
+            let x = -b / (2 * a);
+            ketQua = `Phương trình ${a}x^2 + ${b}x + ${c} = 0: Nghiệm kép x1 = x2 = <strong>${x.toFixed(4)}</strong>`;
+        } else {
+            let x1 = (-b + Math.sqrt(delta)) / (2 * a);
+            let x2 = (-b - Math.sqrt(delta)) / (2 * a);
+            ketQua = `Phương trình ${a}x^2 + ${b}x + ${c} = 0: Hai nghiệm phân biệt x1 = <strong>${x1.toFixed(4)}</strong> và x2 = <strong>${x2.toFixed(4)}</strong>`;
+        }
+    }
+    document.getElementById('output').innerHTML = ketQua;
+</script>
+</body>
+</html>
