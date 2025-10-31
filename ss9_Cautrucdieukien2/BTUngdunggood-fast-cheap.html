@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Ứng dụng Good – Fast – Cheap</title>
+    <style>
+        body {
+            background: #dfe6e9;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding-top: 50px;
+        }
+
+        .toggle {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 20px auto;
+            gap: 15px;
+        }
+
+        label {
+            font-size: 30px;
+            font-weight: bold;
+            width: 120px;
+            text-align: left;
+        }
+
+        input[type="checkbox"] {
+            width: 60px;
+            height: 30px;
+            appearance: none;
+            background: #ccc;
+            border-radius: 20px;
+            position: relative;
+            outline: none;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        input[type="checkbox"]::before {
+            content: "";
+            position: absolute;
+            top: 3px;
+            left: 3px;
+            width: 24px;
+            height: 24px;
+            background: white;
+            border-radius: 50%;
+            transition: 0.3s;
+        }
+
+        input:checked {
+            background: #0984e3;
+        }
+
+        input:checked::before {
+            transform: translateX(30px);
+        }
+
+        #cheap:checked {
+            background: #74b9ff;
+        }
+
+        #fast:checked {
+            background: #d63031;
+        }
+
+        #good:checked {
+            background: #00b894;
+        }
+    </style>
+</head>
+<body>
+<h2>Ứng dụng GOOD – FAST – CHEAP</h2>
+
+<div class="toggle">
+    <input type="checkbox" id="good" onclick="checkLogic()">
+    <label for="good">GOOD</label>
+</div>
+
+<div class="toggle">
+    <input type="checkbox" id="cheap" onclick="checkLogic()">
+    <label for="cheap">CHEAP</label>
+</div>
+
+<div class="toggle">
+    <input type="checkbox" id="fast" onclick="checkLogic()">
+    <label for="fast">FAST</label>
+</div>
+
+<script>
+    function checkLogic() {
+        let good = document.getElementById("good");
+        let cheap = document.getElementById("cheap");
+        let fast = document.getElementById("fast");
+        if (good.checked && cheap.checked && fast.checked) {
+            if (good.lastChanged) {
+                fast.checked = false;
+            } else if (cheap.lastChanged) {
+                good.checked = false;
+            } else if (fast.lastChanged) {
+                cheap.checked = false;
+            }
+        }
+        good.lastChanged = false;
+        cheap.lastChanged = false;
+        fast.lastChanged = false;
+        event.target.lastChanged = true;
+    }
+</script>
+</body>
+</html>
