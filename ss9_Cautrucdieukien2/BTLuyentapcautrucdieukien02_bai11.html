@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Bài 11</title>
+</head>
+<body>
+<h2>Tính thuế thu nhập cá nhân</h2>
+<p id="output"></p>
+<script>
+    let thuNhap = 25;
+    let thue = 0;
+    if (thuNhap <= 5)
+        thue = thuNhap * 0.05;
+    else if (thuNhap <= 10)
+        thue = thuNhap * 0.1 - 0.25;
+    else if (thuNhap <= 18)
+        thue = thuNhap * 0.15 - 0.75;
+    else if (thuNhap <= 32)
+        thue = thuNhap * 0.2 - 1.65;
+    else if (thuNhap <= 52)
+        thue = thuNhap * 0.25 - 3.25;
+    else if (thuNhap <= 80)
+        thue = thuNhap * 0.3 - 5.85;
+    else
+        thue = thuNhap * 0.35 - 9.85;
+    document.getElementById("output").innerHTML =
+        `Thu nhập: ${thuNhap} triệu đồng<br>Thuế phải nộp: ${thue.toFixed(2)} triệu đồng`;
+</script>
+</body>
+</html>

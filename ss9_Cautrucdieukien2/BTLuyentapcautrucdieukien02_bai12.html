@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Bài 12</title>
+</head>
+<body>
+<h2>Tính lãi ngân hàng (lãi mẹ đẻ lãi con)</h2>
+<p id="output"></p>
+<script>
+    let tienGoc = 10000000;
+    let soThang = 6;
+    let laiSuat = 0.7;
+    let tienCuoi = tienGoc * Math.pow(1 + laiSuat / 100, soThang);
+    document.getElementById("output").innerHTML =
+        `Số tiền ban đầu: ${tienGoc.toLocaleString()} đồng<br>` +
+        `Số tháng gửi: ${soThang}<br>` +
+        `Lãi suất hàng tháng: ${laiSuat}%<br>` +
+        `Số tiền sau ${soThang} tháng: ${tienCuoi.toLocaleString()} đồng`;
+</script>
+</body>
+</html>

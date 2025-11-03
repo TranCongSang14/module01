@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Bài 10</title>
+</head>
+<body>
+<h2> Tính tiền điện</h2>
+<p id="output"></p>
+<script>
+    let soDien = 120;
+    let tien = 0;
+    if (soDien <= 50)
+        tien = soDien * 1678;
+    else if (soDien <= 100)
+        tien = 50 * 1678 + (soDien - 50) * 1734;
+    else if (soDien <= 200)
+        tien = 50 * 1678 + 50 * 1734 + (soDien - 100) * 2014;
+    else
+        tien = 50 * 1678 + 50 * 1734 + 100 * 2014 + (soDien - 200) * 2536;
+    document.getElementById("output").innerHTML =
+        `Số điện: ${soDien} kWh <br> → Tiền điện phải trả: ${tien.toLocaleString()} đồng`;
+</script>
+</body>
+</html>

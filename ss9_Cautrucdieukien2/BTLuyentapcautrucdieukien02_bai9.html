@@ -1,10 +1,25 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="vi">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>CHồ</title>
 </head>
 <body>
-
+<h2>Bài 9</h2>
+<p id="output"></p>
+<script>
+    let a = 3, b = 4, c = 5;
+    let ketQua = "";
+    if (a > 0 && b > 0 && c > 0) {
+        if (a + b > c && a + c > b && b + c > a) {
+            ketQua = `Ba cạnh ${a}, ${b}, ${c} tạo thành một tam giác.`;
+        } else {
+            ketQua = `Ba cạnh ${a}, ${b}, ${c} không tạo thành tam giác.`;
+        }
+    } else {
+        ketQua = "Các cạnh phải lớn hơn 0.";
+    }
+    document.getElementById("output").innerHTML = ketQua;
+</script>
 </body>
 </html>

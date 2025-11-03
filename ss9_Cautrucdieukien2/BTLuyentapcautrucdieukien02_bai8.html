@@ -14,9 +14,9 @@
     let lonHon0 = tuoi > 0;
     let nhoHon120 = tuoi < 120;
     if (laSoNguyen && lonHon0 && nhoHon120) {
-        ketQua = `Tuổi **${tuoi}** là số **HỢP LỆ** để là tuổi của một người.`;
+        ketQua = `Tuổi${tuoi} là số hợp lệ để là tuổi của một người`;
     } else {
-        ketQua = `Tuổi **${tuoi}** là số **KHÔNG HỢP LỆ** để là tuổi của một người.`;
+        ketQua = `Tuổi${tuoi} là số không hợp lệ để là tuổi của một người`;
     }
     document.getElementById('output').innerHTML = ketQua;
 </script>
