@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Titlle</title>
+</head>
+<body>
+<script>
+    let num = Number(prompt("Nhập một số: "));
+    let total = 0;
+    // Vòng lặp nhập số cho đến khi người dùng nhập -1
+    while (num != -1) {
+        alert("Bạn vừa nhập: " + num);
+        total += num; // cộng dồn giá trị
+        num = Number(prompt("Nhập một số (nhập -1 để dừng): "));
+    }
+    // Hiển thị tổng
+    document.write("Tổng các số bạn đã nhập là: " + total);
+</script>
+</body>
+</html>
