@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>title</title>
+</head>
+<body>
+
+<button onclick="Chơi()">Chơi</button>
+<p id="m">bấm chơi</p>
+
+<script>
+    function Chơi() {
+        const max = 100;
+        const target = Math.floor(Math.random() * max) + 1;
+        document.getElementById('m').textContent = " Đoán từ 1 đến " + max + ".";
+        let doan;
+        while (doan !== target) {
+            doan = parseInt(prompt("Đoán số của bạn"));
+            if (isNaN(doan)) {
+                document.getElementById('m').textContent = "Hủy chơi lại";
+                return;
+            }
+            if (doan < target) {
+                alert("Lớn hơn");
+            } else if (doan > target) {
+                alert("Bé hơn");
+            }
+        }
+        alert(" Chúc mừng " + target + "!");
+        document.getElementById('m').textContent = "Thắng " + target + "CHơi lại";
+    }
+</script>
+
+</body>
+</html>
