@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    function insertDash(numStr) {
+        let result = numStr[0] || "";
+        for (let i = 1; i < numStr.length; i++) {
+            let prev = parseInt(numStr[i-1]);
+            let curr = parseInt(numStr[i]);
+            if (prev % 2 === 0 && curr % 2 === 0) {
+                result += '-';
+            }
+            result += numStr[i];
+        }
+        return result;
+    }
+    console.log(insertDash("025468"));
+</script>
+</body>
+</html>

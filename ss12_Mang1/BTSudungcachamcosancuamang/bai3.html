@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    function toggleCase(s) {
+        let result = '';
+        for (let char of s) {
+            if (char === char.toLowerCase() && char !== char.toUpperCase()) {
+                result += char.toUpperCase();
+            } else if (char === char.toUpperCase() && char !== char.toLowerCase()) {
+                result += char.toLowerCase();
+            } else {
+                result += char;
+            }
+        }
+        return result;
+    }
+    console.log(toggleCase('The Quick Brown Fox'));
+</script>
+</body>
+</html>
