@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    let tien = prompt("Nhập số tiền ban đầu:");
+    let thang = prompt("Nhập số tháng cho vay:");
+    let lai = prompt("Nhập lãi suất hàng tháng (%):");
+    for (let i = 1; i <= thang; i++) {
+        tien += tien * (lai / 100);
+    }
+    document.write("Tổng tiền sau " + thang + " tháng là: " + tien.toFixed(2));
+</script>
+</body>
+</html>
