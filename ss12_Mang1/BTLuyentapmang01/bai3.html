@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    let arr3 = [5, 12, 8, 15, 3, 20, 7, 11];
+    let max = arr3[0];
+    let sum = 0;
+    for (let i = 0; i < arr3.length; i++) {
+        if (arr3[i] > max) {
+            max = arr3[i];
+        }
+        sum += arr3[i];
+    }
+    let avg = sum / arr3.length;
+    console.log("Giá trị lớn nhất:", max);
+    console.log("Giá trị trung bình:", avg.toFixed(2));
+
+</script>
+</body>
+</html>

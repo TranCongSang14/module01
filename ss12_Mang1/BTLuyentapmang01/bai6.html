@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    let arr6 = [5, 12, 8, 15, 3, 20, 7, 11];
+    let v = 15;
+    let found = false;
+    for (let i = 0; i < arr6.length; i++) {
+        if (arr6[i] === v) {
+            found = true;
+            break;
+        }
+    }
+    if (found) {
+        console.log(v + " is in the array");
+    } else {
+        console.log(v + " is not in the array");
+    }
+</script>
+</body>
+</html>
