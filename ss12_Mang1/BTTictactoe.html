@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<!DOCTYPE html>
+<html>
+<body>
+<h3>Caro 3x3</h3>
+<p id="bd"></p>
+<input id="r" placeholder="hàng 0-2">
+<input id="c" placeholder="cột 0-2">
+<button onclick="danh()">Đánh</button>
+<p id="kq"></p>
+<script>
+    let b = [[".",".","."],[".",".","."],[".",".","."]];
+    let turn = "X";
+    function show(){
+        document.getElementById("bd").innerHTML =
+            b[0].join(" ")+"<br>"+b[1].join(" ")+"<br>"+b[2].join(" ");
+    }
+    show();
+    function danh(){
+        let r = +document.getElementById("r").value;
+        let c = +document.getElementById("c").value;
+        if (b[r][c] !== "."){ document.getElementById("kq").innerHTML="Ô đã có!"; return;}
+        b[r][c] = turn;
+        show();
+        if(
+            (b[r][0]==turn && b[r][1]==turn && b[r][2]==turn) ||     // hàng
+            (b[0][c]==turn && b[1][c]==turn && b[2][c]==turn) ||     // cột
+            (b[0][0]==turn && b[1][1]==turn && b[2][2]==turn) ||     // chéo chính
+            (b[0][2]==turn && b[1][1]==turn && b[2][0]==turn)        // chéo phụ
+        ){
+            document.getElementById("kq").innerHTML = turn + " WIN!";
+            return;
+        }
+        turn = turn==="X" ? "O" : "X";
+        document.getElementById("kq").innerHTML = "Lượt của " + turn;
+    }
+</script>
+
+</body>
+</html>
+
+</body>
+</html>
