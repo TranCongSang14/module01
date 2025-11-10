@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<input id="w" placeholder="tiếng Anh">
+<button onclick="dich()">Dịch</button>
+<p id="kq"></p>
+
+<script>
+    let en = ["hello","cat","dog"];
+    let vi = ["xin chào","mèo","chó"];
+    function dich() {
+        let t = document.getElementById("w").value;
+        let kq = "ko tìm thấy";
+        for (let i = 0; i < en.length; i++) {
+            if (t === en[i]) {
+                kq = vi[i];
+                break;
+            }
+        }
+        document.getElementById("kq").innerHTML = kq;
+    }
+</script>
+</body>
+</html>
