@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h2>Type anything slowly</h2>
+<textarea id="area" rows="10" cols="60" onkeydown="fake()"></textarea>
+<script>
+    let text = "Tui la dan IT, code sieu VIP :)))";
+    let arr = text.split("");
+    let index = 0;
+    function fake() {
+        let result = "";
+        for (let i = 0; i <= index; i++) {
+            result += arr[i];
+        }
+        document.getElementById("area").value = result;
+        index++;
+        if (index >= arr.length) index = 0; 
+    }
+</script>
+</body>
+</html>
