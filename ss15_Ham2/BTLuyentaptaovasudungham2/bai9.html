@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    function demKyTuTrongMang(mangKyTu, kyTu) {
+        let dem = 0;
+        for (let i = 0; i < mangKyTu.length; i++) {
+            if (mangKyTu[i] === kyTu) {
+                dem++;
+            }
+        }
+        if (dem > 0) {
+            return dem;
+        } else {
+            return -1;
+        }
+    }
+    let n = +prompt("Nhập số lượng ký tự trong mảng ");
+    let mangKyTu = [];
+    for (let i = 0; i < n; i++) {
+        mangKyTu.push(prompt("Nhập ký tự thứ " + (i + 1) + ":"));
+    }
+
+    let kyTuCanTim = prompt("Nhập ký tự cần kiểm tra:");
+    let ketQua = demKyTuTrongMang(mangKyTu, kyTuCanTim);
+
+    if (ketQua === -1) {
+        alert("Ký tự '" + kyTuCanTim + "' không có trong mảng ");
+    } else {
+        alert("Ký tự '" + kyTuCanTim + "' xuất hiện " + ketQua + " lần trong mảng ");
+    }
+</script>
+</body>
+</html>

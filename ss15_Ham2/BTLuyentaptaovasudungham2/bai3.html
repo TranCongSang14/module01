@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    function tinhgiaithua(n) {
+        if (n < 0) return "Không tồn tại giai thừa cho số âm ";
+        let result = 1;
+        for (let i = 1; i <= n; i++) {
+            result *= i;
+        }
+        return result;
+    }
+    let soNguyen = +prompt(" Nhập một số nguyên để tính giai thừa:");
+    alert("Giai thừa của " + soNguyen + " là: " + tinhgiaithua(soNguyen));
+</script>
+</body>
+</html>
