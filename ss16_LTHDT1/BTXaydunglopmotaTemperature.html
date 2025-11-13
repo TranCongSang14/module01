@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    class Temperature {
+        constructor(celsius) {
+            if (celsius < -273) {
+                this.celsius = -273;
+            } else {
+                this.celsius = celsius;
+            }
+        }
+        toFahrenheit() {
+            return this.celsius * 9 / 5 + 32;
+        }
+        toKelvin() {
+            return this.celsius + 273.15;
+        }
+    }
+    let nhietdo1 = new Temperature(25);
+    document.write("nhiệt độ (°C): " + nhietdo1.celsius + "<br>");
+    document.write("đổi sang °F: " + nhietdo1.toFahrenheit().toFixed(2) + "<br>");
+    document.write("đổi sang K: " + nhietdo1.toKelvin().toFixed(2) + "<br>");
+</script>
+</body>
+</html>
