@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    function footToMeter(foot) {
+        return 0.305 * foot;
+    }
+    function meterToFoot(meter) {
+        return 3.279 * meter;
+    }
+    console.log("Feet -> Meters");
+    for (let foot = 1; foot <= 10; foot++) {
+        console.log(`${foot} feet = ${footToMeter(foot).toFixed(3)} meters`);
+    }
+    console.log("\nMeters -> Feet");
+    const metersArray = [20, 25, 30, 35, 40, 45, 50, 55, 60, 65];
+    for (let meter of metersArray) {
+        console.log(`${meter} meters = ${meterToFoot(meter).toFixed(3)} feet`);
+    }
+</script>
+</body>
+</html>
