@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h2>Thêm sản phẩm</h2>
+<input type="text" id="newProduct">
+<button onclick="addProduct()">Thêm</button>
+<h2>Danh sách sản phẩm</h2>
+<p id="count"></p>
+<table border="1" cellpadding="8" id="productTable"></table>
+<script>
+    let products = ["Sony Xperia", "Samsung Galaxy", "Nokia 6"];
+    let editIndex = -1;
+    function showProducts() {
+        let table = "<tr><th>STT</th><th>Tên sản phẩm</th><th>Sửa</th><th>Xóa</th></tr>";
+        for (let i = 0; i < products.length; i++) {
+            table += `
+                <tr>
+                    <td>${i + 1}</td>
+                    <td>${products[i]}</td>
+                    <td><button onclick="editProduct(${i})">Sửa</button></td>
+                    <td><button onclick="deleteProduct(${i})">Xóa</button></td>
+                </tr>`;
+        }
+        document.getElementById("productTable").innerHTML = table;
+        document.getElementById("count").innerText = products.length + " sản phẩm";
+    }
+    function addProduct() {
+        let name = document.getElementById("newProduct").value.trim();
+        if (name === "") return alert("Vui lòng nhập tên sản phẩm!");
+
+        products.push(name);
+        document.getElementById("newProduct").value = "";
+        showProducts();
+    }
+    function editProduct(index) {
+        let newName = prompt("Nhập tên mới:", products[index]);
+        if (newName !== null && newName.trim() !== "") {
+            products[index] = newName;
+            showProducts();
+        }
+    }
+    function deleteProduct(index) {
+        if (confirm("Bạn có chắc muốn xoá?")) {
+            products.splice(index, 1);
+            showProducts();
+        }
+    }
+    showProducts();
+</script>
+</body>
+</html>
