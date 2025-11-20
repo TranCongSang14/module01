@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    class Apple {
+        constructor(weight = 10) {
+            this.weight = weight;
+        }
+        eat() {
+            if (this.weight > 0) this.weight--;
+        }
+        isEmpty() {
+            return this.weight <= 0;
+        }
+        info() {
+            alert(this.isEmpty() ? "Táo đã hết" : "Táo còn " + this.weight);
+        }
+    }
+    class Human {
+        constructor(name, gender, weight, apple) {
+            this.name = name;
+            this.gender = gender;
+            this.weight = Number(weight);
+            this.apple = apple;
+        }
+        eatApple() {
+            if (this.apple.isEmpty()) {
+                alert(this.name + " muốn ăn nhưng táo hết rồi!");
+            } else {
+                this.apple.eat();
+                this.weight++;
+                alert(this.name + " ăn táo → tăng cân, giờ là " + this.weight);
+            }
+        }
+        info() {
+            return `${this.name} - giới tính: ${this.gender} - cân nặng: ${this.weight}`;
+        }
+    }
+    let apple = new Apple();
+    let adam = null;
+    let eva = null;
+    let choose;
+    do {
+        choose = Number(prompt(
+            `1. Tạo Eva
+2. Tạo Adam
+3. Xem thông tin Eva
+4. Xem thông tin Adam
+5. Eva ăn táo
+6. Adam ăn táo
+7. Xem táo còn bao nhiêu
+0. Thoát`
+        ));
+
+        if (choose === 1) {
+            eva = new Human(prompt("Tên Eva:"), "Nữ", prompt("Cân nặng:"), apple);
+        }
+
+        else if (choose === 2) {
+            adam = new Human(prompt("Tên Adam:"), "Nam", prompt("Cân nặng:"), apple);
+        }
+
+        else if (choose === 3) {
+            alert(eva ? eva.info() : "Chưa tạo Eva");
+        }
+
+        else if (choose === 4) {
+            alert(adam ? adam.info() : "Chưa tạo Adam");
+        }
+
+        else if (choose === 5) {
+            eva ? eva.eatApple() : alert("Chưa có Eva");
+        }
+
+        else if (choose === 6) {
+            adam ? adam.eatApple() : alert("Chưa có Adam");
+        }
+
+        else if (choose === 7) {
+            apple.info();
+        }
+
+    } while (choose !== 0);
+</script>
+</body>
+</html>

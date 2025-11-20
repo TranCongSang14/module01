@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    class CongTac {
+        constructor(trangThai = true){
+            this.trangThai = trangThai;
+        }
+    }
+    class BongDen extends CongTac {
+        constructor(trangThai = true){
+            super(trangThai);
+        }
+        thayDoiTrangThai(){
+            let chon = Number(prompt("1: Bật đèn\n2: Tắt đèn"));
+
+            if(chon === 1){
+                this.trangThai = true;
+                alert("Đèn đã được bật");
+            }
+            else if(chon === 2){
+                if(this.trangThai === false){
+                    alert("Đèn đang tắt rồi, không thể tắt thêm");
+                } else {
+                    this.trangThai = false;
+                    alert("Đèn đã được tắt");
+                }
+            }
+        }
+
+        xemTrangThai(){
+            if(this.trangThai){
+                alert("Đèn đang bật");
+            }else{
+                alert("Đèn đang tắt");
+            }
+        }
+    }
+    let den = new BongDen();
+    let luot = 10;
+    let chon;
+    while(luot > 0){
+        chon = Number(prompt("1: Bật/Tắt đèn\n2: Xem trạng thái"));
+        if(chon === 1){
+            den.thayDoiTrangThai();
+        }else if(chon === 2){
+            den.xemTrangThai();
+        }
+        luot--;
+        alert("Bạn còn " + luot + " lượt");
+    }
+</script>
+</body>
+</html>
