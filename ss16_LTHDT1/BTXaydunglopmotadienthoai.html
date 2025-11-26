@@ -1,10 +1,66 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
+    <meta charset="UTF-8">
+    <title>Title</title>
 </head>
 <body>
-$END$
+<script>
+    class Mobile {
+        constructor(name, pin) {
+            this.name = name;
+            this.pin = pin;
+            this.isOn = false;
+            this.draft = "";
+            this.inbox = [];
+            this.sent = [];
+        }
+        usePin() {
+            if (this.pin > 0) this.pin--;
+        }
+        power() {
+            this.isOn = !this.isOn;
+            console.log(`${this.name} đang ${this.isOn ? "BẬT" : "TẮT"}`);
+        }
+        charge() {
+            if (this.pin < 100) this.pin++;
+            console.log(`${this.name} đang sạc, pin = ${this.pin}`);
+        }
+        writeMessage(text) {
+            if (!this.isOn) return console.log(`${this.name} đang tắt, không soạn tin được!`);
+            this.draft = text;
+            this.usePin();
+        }
+        sendMessage(otherPhone) {
+            if (!this.isOn) return console.log(`${this.name} đang tắt, không gửi tin được`);
+            if (this.draft === "") return console.log("Chưa có nội dung tin nhắn");
+            otherPhone.receiveMessage(this.draft);
+            this.sent.push(this.draft);
+            console.log(`${this.name} đã gửi: "${this.draft}" → ${otherPhone.name}`);
+            this.draft = "";
+            this.usePin();
+        }
+        receiveMessage(text) {
+            this.inbox.push(text);
+        }
+        readInbox() {
+            if (!this.isOn) return console.log(`${this.name} đang tắt, không xem hộp thư đến được!`);
+            this.usePin();
+            console.log(`    Hộp thư đến của ${this.name}:`, this.inbox);
+        }
+        readSent() {
+            if (!this.isOn) return console.log(`${this.name} đang tắt, không xem tin đã gửi được!`);
+            this.usePin();
+            console.log(` Tin đã gửi của ${this.name}:`, this.sent);
+        }
+    }
+    let nokia = new Mobile("Nokia", 90);
+    let iphone = new Mobile("iPhone", 90);
+    nokia.power();
+    iphone.power();
+    nokia.writeMessage("Hello iPhone, tôi là Nokia!");
+    nokia.sendMessage(iphone);
+    iphone.readInbox();
+</script>
 </body>
 </html>

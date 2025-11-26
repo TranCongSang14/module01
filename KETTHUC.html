@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Thư viện trực tuyến</title>
+    <style>
+        body { font-family: Arial; background: #e9f0ff; padding: 20px; }
+        h1 { text-align: center; color: #0056d6; margin-bottom: 20px; }
+        .top { display: flex; justify-content: center; gap: 10px; margin-bottom: 20px; padding: 10px; background: white; border-radius: 10px; width: fit-content; margin-left: auto; margin-right: auto; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+        select, button, input { padding: 8px 12px; border-radius: 6px; border: 1px solid #ccc; font-size: 14px; }
+        #btnAdd { background: #28a745; color: white; border: none; }
+        #btnAdd:hover { background: #218838; }
+        .filter-box { width: 100%; display: flex; justify-content: space-between; margin-bottom: 15px; }
+        table { width: 100%; border-collapse: collapse; background: white; border-radius: 10px; overflow: hidden; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+        th { background: #0056d6; color: white; padding: 12px; font-size: 15px; }
+        td { padding: 10px; border-bottom: 1px solid #ddd; }
+        tr:nth-child(even) { background: #f4f8ff; }
+        .admin-btn, .view-btn { padding: 6px 10px; border: none; border-radius: 6px; color: white; cursor: pointer; }
+        .edit { background: #ff9800; }
+        .edit:hover { background: #e68900; }
+        .delete { background: #d9534f; }
+        .delete:hover { background: #c9302c; }
+        .view-btn { background: #007bff; }
+        .view-btn:hover { background: #0069d9; }
+        #cartBox { margin-top: 30px; }
+        #total { font-size: 18px; font-weight: bold; color: darkred; padding: 10px; }
+        #buyCart { background:#28a745;color:white;border:none;padding:8px 12px;border-radius:6px;cursor:pointer; margin-top:10px; }
+    </style>
+</head>
+<body>
+<h1>📚 THƯ VIỆN TRỰC TUYẾN</h1>
+<div class="top">
+    <label>Vai trò:</label>
+    <select id="role">
+        <option value="user">User</option>
+        <option value="admin">Admin</option>
+    </select>
+    <button id="btnAdd" style="display:none;">+ Thêm sách</button>
+</div>
+<div class="filter-box">
+    <input type="text" id="search" placeholder="🔍 Tìm sách theo tên...">
+    <select id="sortPrice">
+        <option value="none">Lọc theo giá</option>
+        <option value="asc">Giá thấp → cao</option>
+        <option value="desc">Giá cao → thấp</option>
+    </select>
+</div>
+<table>
+    <thead>
+    <tr>
+        <th>Tiêu đề</th>
+        <th>Tác giả</th>
+        <th>Giá</th>
+        <th>Hành động</th>
+    </tr>
+    </thead>
+    <tbody id="bookTable"></tbody>
+</table>
+<div id="cartBox">
+    <h2>🛒 Giỏ hàng</h2>
+    <table>
+        <thead>
+        <tr>
+            <th>Tên sách</th>
+            <th>Giá</th>
+            <th>Xóa</th>
+        </tr>
+        </thead>
+        <tbody id="cartList"></tbody>
+    </table>
+    <p id="total">Tổng tiền: 0đ</p>
+    <button id="buyCart">💳 Mua tất cả sách trong giỏ</button>
+</div>
+<script>
+    let books = [
+        { id: 1, title: "HTML & CSS Cơ Bản", author: "CodeGym", price: 50000, desc: "Nhập môn giao diện web." },
+        { id: 2, title: "JavaScript Cơ Bản", author: "Nguyễn Văn A", price: 65000, desc: "Biến, hàm, điều kiện, vòng lặp." },
+        { id: 3, title: "Lập Trình Web Cho Người Mới", author: "CodeGym", price: 70000, desc: "Kiến thức nền tảng Web." },
+        { id: 4, title: "HTML5 Nâng Cao", author: "Lê Minh", price: 55000, desc: "Thẻ semantic, API mới." },
+        { id: 5, title: "CSS Flexbox & Grid", author: "Trần Nam", price: 60000, desc: "Bố cục web hiện đại." },
+        { id: 6, title: "JavaScript DOM", author: "Nguyễn Tín", price: 80000, desc: "Thao tác DOM, sự kiện." },
+        { id: 7, title: "Responsive Design", author: "Phạm Bình", price: 75000, desc: "Tối ưu cho mobile." },
+        { id: 8, title: "jQuery Cơ Bản", author: "Vũ Đình", price: 50000, desc: "Thư viện JavaScript phổ biến." },
+        { id: 9, title: "Bootstrap 5", author: "Hữu Đức", price: 90000, desc: "Tạo giao diện nhanh chóng." },
+        { id: 10, title: "Web Full-Stack Cơ Bản", author: "CodeGym", price: 120000, desc: "Frontend + Backend + DB." },
+        { id: 11, title: "Git & GitHub", author: "Phạm Duy", price: 45000, desc: "Quản lý mã nguồn." },
+        { id: 12, title: "Tư Duy Lập Trình", author: "Nhiều tác giả", price: 85000, desc: "Giải quyết vấn đề khi lập trình." }
+    ];
+    const tableBody = document.getElementById("bookTable");
+    const roleSelect = document.getElementById("role");
+    const btnAdd = document.getElementById("btnAdd");
+    const searchInput = document.getElementById("search");
+    const sortSelect = document.getElementById("sortPrice");
+    let cart = [];
+    function addToCart(id){
+        let book = books.find(b => b.id===id);
+        cart.push(book);
+        renderCart();
+    }
+    function renderCart(){
+        let html="", total=0;
+        cart.forEach((item,i)=>{
+            total+=item.price;
+            html+=`<tr><td>${item.title}</td><td>${item.price.toLocaleString()}đ</td><td><button class="delete" onclick="removeItem(${i})">X</button></td></tr>`;
+        });
+        document.getElementById("cartList").innerHTML = html;
+        document.getElementById("total").innerText = "Tổng tiền: "+total.toLocaleString()+"đ";
+    }
+    function removeItem(index){
+        cart.splice(index,1);
+        renderCart();
+    }
+    document.getElementById("buyCart").onclick = function(){
+        if(cart.length===0){ alert("Giỏ hàng trống!"); return; }
+        let name = prompt("Tên khách hàng:");
+        if(!name) return;
+        let phone = prompt("SĐT:");
+        if(!phone) return;
+        let address = prompt("Địa chỉ giao hàng:");
+        if(!address) return;
+        let info = "🧾 HÓA ĐƠN MUA SÁCH\n\n";
+        let total=0;
+        cart.forEach(b=>{
+            info+=`📘 ${b.title} - ${b.price.toLocaleString()}đ\n`;
+            total+=b.price;
+        });
+        info+=`\nTổng tiền: ${total.toLocaleString()}đ\n\n`;
+        info+=`👤 Khách hàng: ${name}\n📞 ${phone}\n📍 ${address}\n\nCảm ơn bạn! ❤️`;
+        alert(info);
+        cart = [];
+        renderCart();
+    }
+    function viewBook(id){
+        const b = books.find(x=>x.id===id);
+        alert(`📘 ${b.title}\nTác giả: ${b.author}\nGiá: ${b.price.toLocaleString()}đ\n\nMô tả:\n${b.desc}`);
+    }
+    function buyBook(id){
+        const b = books.find(x=>x.id===id);
+        let name = prompt("Tên khách:");
+        if(!name)return;
+        let phone = prompt("SĐT:");
+        if(!phone)return;
+        let address = prompt("Địa chỉ:");
+        if(!address)return;
+        alert(
+            "🧾 HÓA ĐƠN\n\n"+
+            `📘 ${b.title} - ${b.price.toLocaleString()}đ\n`+
+            `👤 ${name}\n📞 ${phone}\n📍 ${address}\nCảm ơn bạn! ❤️`
+        );
+    }
+    function renderTable(){
+        let keyword=searchInput.value.toLowerCase();
+        let filtered = books.filter(b=>b.title.toLowerCase().includes(keyword));
+        if(sortSelect.value==="asc") filtered.sort((a,b)=>a.price-b.price);
+        if(sortSelect.value==="desc") filtered.sort((a,b)=>b.price-a.price);
+        tableBody.innerHTML="";
+        filtered.forEach(book=>{
+            let actions="";
+            if(roleSelect.value==="admin"){
+                actions=`<button class="admin-btn edit" onclick="editBook(${book.id})">Sửa</button>
+                     <button class="admin-btn delete" onclick="deleteBook(${book.id})">Xóa</button>`;
+            }else{
+                actions=`<button class="view-btn" onclick="viewBook(${book.id})">Xem</button>
+                     <button class="view-btn" onclick="buyBook(${book.id})">Mua</button>
+                     <button class="view-btn" onclick="addToCart(${book.id})">🛒</button>`;
+            }
+            tableBody.innerHTML+=`<tr><td>${book.title}</td><td>${book.author}</td><td>${book.price.toLocaleString()}đ</td><td>${actions}</td></tr>`;
+        });
+    }
+    btnAdd.onclick=function(){
+        let title=prompt("Tên sách:");
+        if(!title)return;
+        let author=prompt("Tác giả:");
+        if(!author)return;
+        let price=parseInt(prompt("Giá sách (VNĐ):"));
+        if(isNaN(price))return alert("Giá không hợp lệ!");
+        let desc=prompt("Mô tả sách:")||"";
+        const id=books.length?books[books.length-1].id+1:1;
+        books.push({id,title,author,price,desc});
+        renderTable();
+    }
+    function editBook(id){
+        const b=books.find(x=>x.id===id);
+        let title=prompt("Tên sách:",b.title); if(!title)return;
+        let author=prompt("Tác giả:",b.author); if(!author)return;
+        let price=parseInt(prompt("Giá (VNĐ):",b.price)); if(isNaN(price))return alert("Giá sai!");
+        let desc=prompt("Mô tả:",b.desc)||"";
+        b.title=title;b.author=author;b.price=price;b.desc=desc;
+        renderTable();
+    }
+    function deleteBook(id){ if(!confirm("Xóa sách này?")) return; books=books.filter(b=>b.id!==id); renderTable(); }
+    roleSelect.onchange=function(){ btnAdd.style.display=roleSelect.value==="admin"?"inline-block":"none"; renderTable(); }
+    searchInput.oninput=renderTable; sortSelect.onchange=renderTable;
+    renderTable();
+</script>
+</body>
+</html>
