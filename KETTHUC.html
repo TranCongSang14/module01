@@ -28,7 +28,7 @@
     </style>
 </head>
 <body>
-<h1>📚 THƯ VIỆN TRỰC TUYẾN</h1>
+<h1> THƯ VIỆN TRỰC TUYẾN</h1>
 <div class="top">
     <label>Vai trò:</label>
     <select id="role">
@@ -38,7 +38,7 @@
     <button id="btnAdd" style="display:none;">+ Thêm sách</button>
 </div>
 <div class="filter-box">
-    <input type="text" id="search" placeholder="🔍 Tìm sách theo tên...">
+    <input type="text" id="search" placeholder=" Tìm sách theo tên...">
     <select id="sortPrice">
         <option value="none">Lọc theo giá</option>
         <option value="asc">Giá thấp → cao</option>
@@ -57,7 +57,7 @@
     <tbody id="bookTable"></tbody>
 </table>
 <div id="cartBox">
-    <h2>🛒 Giỏ hàng</h2>
+    <h2> Giỏ hàng</h2>
     <table>
         <thead>
         <tr>
@@ -69,7 +69,7 @@
         <tbody id="cartList"></tbody>
     </table>
     <p id="total">Tổng tiền: 0đ</p>
-    <button id="buyCart">💳 Mua tất cả sách trong giỏ</button>
+    <button id="buyCart"> Mua tất cả sách trong giỏ</button>
 </div>
 <script>
     let books = [
@@ -118,7 +118,7 @@
         if(!phone) return;
         let address = prompt("Địa chỉ giao hàng:");
         if(!address) return;
-        let info = "🧾 HÓA ĐƠN MUA SÁCH\n\n";
+        let info = " HÓA ĐƠN MUA SÁCH\n\n";
         let total=0;
         cart.forEach(b=>{
             info+=`📘 ${b.title} - ${b.price.toLocaleString()}đ\n`;
@@ -145,7 +145,7 @@
         alert(
             "🧾 HÓA ĐƠN\n\n"+
             `📘 ${b.title} - ${b.price.toLocaleString()}đ\n`+
-            `👤 ${name}\n📞 ${phone}\n📍 ${address}\nCảm ơn bạn! ❤️`
+            `👤 ${name}\n📞 ${phone}\n📍 ${address}\nCảm ơn bạn     `
         );
     }
     function renderTable(){
